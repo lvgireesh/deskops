@@ -2,7 +2,7 @@
 
 Service desk platform with an SLA engine, built during the LogicVeda Web Development internship programme (Phase 1: Ticketing Core).
 
-> Internal project. Do not share this repository or its documents outside the programme.
+> Built as part of the LogicVeda internship programme. Never commit secrets, `.env` files, or programme documents to this repository.
 
 ## Tech stack
 
@@ -34,21 +34,24 @@ git --version
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/lvgireesh/deskops
+git clone https://github.com/lvgireesh/deskops.git
 cd deskops
 
 # 2. Use the right Node version
-nvm use
+nvm use 22
 
 # 3. Create your local environment file
-cp .env.example .env
+cp .env.example .env          # macOS / Linux / Git Bash
+copy .env.example .env        # Windows Command Prompt
 
 # 4. Start PostgreSQL and Redis
 docker compose up -d
 
 # 5. Install dependencies
-cd backend && npm install
-cd ../frontend && npm install
+cd backend
+npm install
+cd ../frontend
+npm install
 cd ..
 ```
 
@@ -90,6 +93,7 @@ deskops/
   docs/
     adr/          Architecture decision records (one page each)
     retros/       Retrospective notes
+  .github/        Pull request template
   docker-compose.yml
   .env.example    Template for environment variables
   .nvmrc          Node version
@@ -126,7 +130,7 @@ docker compose down -v     # stop the services and delete the local database
 | _TBD_ | _TBD_ | _TBD_ |
 | _TBD_ | _TBD_ | _TBD_ |
 
-Mentor: Shaurya Pandey
+Mentor: Shaurya Pandey (LogicVeda)
 
 ## Troubleshooting
 
@@ -134,6 +138,7 @@ Mentor: Shaurya Pandey
 |---|---|
 | `port is already allocated` on 5432 or 6379 | Another Postgres or Redis is running on your laptop. Stop it, or change the port mapping in `docker-compose.yml` and update `.env`. |
 | `docker: command not found` or "cannot connect to the Docker daemon" | Open Docker Desktop and wait until it is running. |
-| Wrong Node version | Run `nvm use` in the repository root. |
+| Wrong Node version | Run `nvm use 22` in a terminal. |
+| `cp` is not recognised on Windows | Use `copy .env.example .env` in Command Prompt, or run the commands in Git Bash. |
 | Backend cannot connect to the database | Run `docker compose ps` and confirm `db` is up. Check that `DATABASE_URL` in `.env` matches `.env.example`. |
 | `npm install` fails | Delete `node_modules` and `package-lock.json` only if a teammate confirms, then retry. Otherwise ask in the team chat with the full error text. |
