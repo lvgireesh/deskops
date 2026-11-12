@@ -34,7 +34,7 @@ git --version
 
 ```bash
 # 1. Clone the repository
-git clone <REPO_URL>
+git clone https://github.com/lvgireesh/deskops
 cd deskops
 
 # 2. Use the right Node version
@@ -137,9 +137,3 @@ Mentor: Shaurya Pandey
 | Wrong Node version | Run `nvm use` in the repository root. |
 | Backend cannot connect to the database | Run `docker compose ps` and confirm `db` is up. Check that `DATABASE_URL` in `.env` matches `.env.example`. |
 | `npm install` fails | Delete `node_modules` and `package-lock.json` only if a teammate confirms, then retry. Otherwise ask in the team chat with the full error text. |
-
-## Need help?
-
-1. Ask your teammates in the team chat.
-2. Post a question on the Projects page on LogicVeda.
-3. Raise a blocker in the weekly check-in so the mentor is notified.
